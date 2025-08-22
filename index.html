@@ -27,24 +27,23 @@
     a:hover { text-decoration: underline; }
 
     /* Header banner */
-    .hero {
-      background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-    }
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 800;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
-    .hero p {
-      margin: 12px 0 0;
-      font-size: clamp(16px, 3vw, 20px);
-      font-weight: 500;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
+.hero {
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45); /* adjust 0.45 up/down for darker/lighter */
+}
+.hero h1,
+.hero p {
+  position: relative; /* ensures text stays above overlay */
+}
 
     /* Wrapper */
     .wrap {
