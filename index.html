@@ -3,75 +3,57 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Request Service</title>
+  <title>Sample Landscaping Services</title>
   <style>
-    :root{
-      --bg: #f7f7f9;
+    :root {
+      --bg: #f3f4f6;
       --card: #ffffff;
+      --border: #d1d5db;
       --text: #1f2937;
       --muted: #6b7280;
-      --accent: #0ea5e9; /* link/cta color (neutral blue) */
-      --border: #e5e7eb;
-      --shadow: 0 10px 25px rgba(0,0,0,.06);
-      --radius: 14px;
-      --maxw: 980px;
+      --accent: #16a34a; /* green accent for landscaping vibe */
+      --radius: 12px;
+      --maxw: 960px;
+      --shadow: 0 6px 20px rgba(0,0,0,0.06);
     }
     * { box-sizing: border-box; }
-    html,body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; }
+    body {
+      margin: 0; padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* Top bar */
-    .top {
-      width:100%;
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-    }
-    .top-inner {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 14px 18px;
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    .brand {
-      font-weight: 700;
-      letter-spacing: .2px;
-    }
-    .nav {
-      display:flex; gap:18px;
-    }
-    .nav a { color: var(--muted); font-size: 14px; }
-    .nav a:hover { color: var(--text); }
-
-    /* Hero / header */
+    /* Header banner */
     .hero {
-      background: linear-gradient(180deg, #ffffff 0%, #fafafb 100%);
-      border-bottom: 1px solid var(--border);
+      background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
     }
-    .hero-inner {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 42px 18px 28px;
-    }
-    .title {
-      margin: 0 0 8px 0;
-      font-size: clamp(26px, 3.6vw, 40px);
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -.3px;
-    }
-    .subtitle {
+    .hero h1 {
       margin: 0;
-      color: var(--muted);
-      font-size: clamp(14px, 2.2vw, 16px);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    .hero p {
+      margin: 12px 0 0;
+      font-size: clamp(16px, 3vw, 20px);
+      font-weight: 500;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
 
-    /* Content card */
+    /* Wrapper */
     .wrap {
       max-width: var(--maxw);
-      margin: 24px auto 60px;
-      padding: 0 18px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
+
+    /* Card */
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -82,64 +64,42 @@
     .card-head {
       padding: 18px 20px;
       border-bottom: 1px solid var(--border);
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px;
+      background: #fafafa;
     }
-    .card-title {
+    .card-head h2 {
       margin: 0;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
     }
     .card-body {
-      padding: 0; /* iframe handles its own spacing */
+      padding: 0;
     }
 
     /* Footer */
     .footer {
-      padding: 28px 18px 40px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
+      text-align: center;
       font-size: 13px;
-      text-align:center;
-      background:#fff;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 640px){
-      .nav { display:none; }
-      .card-title { font-size: 16px; }
+      color: var(--muted);
+      padding: 24px 12px 40px;
     }
   </style>
 </head>
 <body>
-  <!-- Top bar (unbranded) -->
-  <div class="top">
-    <div class="top-inner">
-      <div class="brand">Request Service</div>
-      <nav class="nav" aria-label="Primary">
-        <a href="#">Home</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-      </nav>
-    </div>
-  </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-inner">
-      <h1 class="title">Tell us what you need</h1>
-      <p class="subtitle">Enter your contact details and address. We’ll validate coverage and route your request.</p>
-    </div>
-  </section>
+  <!-- Hero section -->
+  <header class="hero">
+    <h1>Sample Landscaping Services</h1>
+    <p>Serving Sample County and surrounding area for over 5 years!</p>
+  </header>
 
-  <!-- Content -->
+  <!-- Main content -->
   <main class="wrap">
-    <section class="card" aria-labelledby="form-title">
+    <section class="card">
       <div class="card-head">
-        <h2 class="card-title" id="form-title">Request for Service</h2>
+        <h2>Request Service from Sample Company</h2>
       </div>
       <div class="card-body">
-        <!-- Jotform embed (auto-resizing) -->
+        <!-- Jotform embed -->
         <iframe
           id="JotFormIFrame-252316239909058"
           title="Request for Service"
@@ -152,14 +112,12 @@
         </iframe>
         <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
         <script>
-          // Read ?company=... and pass to hidden company_id in the Jotform
           (function () {
             const params = new URLSearchParams(location.search);
-            const company = params.get('company') || 'default-company';
+            const company = params.get('company') || 'Sample Company';
             const formBase = 'https://form.jotform.com/252316239909058';
             const iframe = document.getElementById('JotFormIFrame-252316239909058');
             iframe.src = formBase + '?company_id=' + encodeURIComponent(company);
-            // Auto-resize provided by Jotform
             window.jotformEmbedHandler("iframe[id='JotFormIFrame-252316239909058']", "https://form.jotform.com/");
           })();
         </script>
@@ -169,9 +127,11 @@
 
   <!-- Footer -->
   <footer class="footer">
-    © <span id="y"></span> — Request Service
+    © <span id="y"></span> Sample Company — All Rights Reserved
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
