@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Request Service</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; }
+    header { padding: 16px; border-bottom: 1px solid #eee; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 16px; }
+    iframe { width: 100%; height: 1100px; border: 0; }
+  </style>
+</head>
+<body>
+  <header class="wrap"><h1 id="title">Request Service</h1></header>
+  <main class="wrap">
+    <iframe id="form" src="" allow="clipboard-write"></iframe>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const company = params.get('company') || 'default-company';
+    const jotformBase = 'https://form.jotform.com/252316239909058'; 
+    document.getElementById('form').src =
+      `${jotformBase}?company_id=${encodeURIComponent(company)}`;
+  </script>
+</body>
+</html>
