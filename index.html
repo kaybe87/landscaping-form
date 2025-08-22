@@ -5,24 +5,173 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Request Service</title>
   <style>
-    body { font-family: system-ui, sans-serif; margin: 0; }
-    header { padding: 16px; border-bottom: 1px solid #eee; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 16px; }
-    iframe { width: 100%; height: 1100px; border: 0; }
+    :root{
+      --bg: #f7f7f9;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #0ea5e9; /* link/cta color (neutral blue) */
+      --border: #e5e7eb;
+      --shadow: 0 10px 25px rgba(0,0,0,.06);
+      --radius: 14px;
+      --maxw: 980px;
+    }
+    * { box-sizing: border-box; }
+    html,body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Top bar */
+    .top {
+      width:100%;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .top-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .nav {
+      display:flex; gap:18px;
+    }
+    .nav a { color: var(--muted); font-size: 14px; }
+    .nav a:hover { color: var(--text); }
+
+    /* Hero / header */
+    .hero {
+      background: linear-gradient(180deg, #ffffff 0%, #fafafb 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 42px 18px 28px;
+    }
+    .title {
+      margin: 0 0 8px 0;
+      font-size: clamp(26px, 3.6vw, 40px);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -.3px;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(14px, 2.2vw, 16px);
+    }
+
+    /* Content card */
+    .wrap {
+      max-width: var(--maxw);
+      margin: 24px auto 60px;
+      padding: 0 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+    }
+    .card-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .card-body {
+      padding: 0; /* iframe handles its own spacing */
+    }
+
+    /* Footer */
+    .footer {
+      padding: 28px 18px 40px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      text-align:center;
+      background:#fff;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 640px){
+      .nav { display:none; }
+      .card-title { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
-  <header class="wrap"><h1 id="title">Request Service</h1></header>
+  <!-- Top bar (unbranded) -->
+  <div class="top">
+    <div class="top-inner">
+      <div class="brand">Request Service</div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 class="title">Tell us what you need</h1>
+      <p class="subtitle">Enter your contact details and address. We’ll validate coverage and route your request.</p>
+    </div>
+  </section>
+
+  <!-- Content -->
   <main class="wrap">
-    <iframe id="form" src="" allow="clipboard-write"></iframe>
+    <section class="card" aria-labelledby="form-title">
+      <div class="card-head">
+        <h2 class="card-title" id="form-title">Request for Service</h2>
+      </div>
+      <div class="card-body">
+        <!-- Jotform embed (auto-resizing) -->
+        <iframe
+          id="JotFormIFrame-252316239909058"
+          title="Request for Service"
+          allowtransparency="true"
+          allow="geolocation; microphone; camera; fullscreen; payment"
+          src=""
+          frameborder="0"
+          style="min-width:100%;max-width:100%;border:0;"
+          scrolling="no">
+        </iframe>
+        <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+        <script>
+          // Read ?company=... and pass to hidden company_id in the Jotform
+          (function () {
+            const params = new URLSearchParams(location.search);
+            const company = params.get('company') || 'default-company';
+            const formBase = 'https://form.jotform.com/252316239909058';
+            const iframe = document.getElementById('JotFormIFrame-252316239909058');
+            iframe.src = formBase + '?company_id=' + encodeURIComponent(company);
+            // Auto-resize provided by Jotform
+            window.jotformEmbedHandler("iframe[id='JotFormIFrame-252316239909058']", "https://form.jotform.com/");
+          })();
+        </script>
+      </div>
+    </section>
   </main>
 
-  <script>
-    const params = new URLSearchParams(location.search);
-    const company = params.get('company') || 'default-company';
-    const jotformBase = 'https://form.jotform.com/252316239909058'; 
-    document.getElementById('form').src =
-      `${jotformBase}?company_id=${encodeURIComponent(company)}`;
-  </script>
+  <!-- Footer -->
+  <footer class="footer">
+    © <span id="y"></span> — Request Service
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
