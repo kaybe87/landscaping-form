@@ -113,7 +113,7 @@
         <script>
           (function () {
             const params = new URLSearchParams(location.search);
-            const company = params.get('company') || 'Sample Company';
+            const company = params.get('company') || 'SampleCompany';
             const formBase = 'https://form.jotform.com/252316239909058';
             const iframe = document.getElementById('JotFormIFrame-252316239909058');
             iframe.src = formBase + '?company_id=' + encodeURIComponent(company);
